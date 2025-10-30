@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exam Submitted</title>
+  <style>
+    body {
+      background: #e8f5e9;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      color: #2e7d32;
+    }
+    .score-box {
+      display: inline-block;
+      background: white;
+      padding: 30px 50px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    h1 { color: #1b5e20; }
+    p { font-size: 18px; }
+  </style>
+</head>
+<body>
+  <div class="score-box">
+    <h1>✅ Thank you! Your exam has been submitted.</h1>
+    <p id="scoreText">Calculating your score...</p>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const score = params.get("score");
+    const total = params.get("total");
+    if (score !== null && total !== null) {
+      document.getElementById("scoreText").textContent =
+        `Your objective score: ${score} / ${total}.`;
+    } else {
+      document.getElementById("scoreText").textContent =
+        "Your answers have been submitted successfully. Subjective responses will be evaluated soon.";
+    }
+  </script>
+</body>
+</html>

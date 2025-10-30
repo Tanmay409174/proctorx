@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Online Exam</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #2E7D32, #43A047, #66BB6A, #A5D6A7);
+      background-size: 400% 400%;
+      animation: bgMove 12s ease infinite;
+      margin: 0;
+      color: #333;
+    }
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 60px auto;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 35px 40px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+      animation: fadeIn 0.8s ease;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 28px;
+      font-weight: 600;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      letter-spacing: 0.8px;
+    }
+
+    .question {
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .question p {
+      font-weight: 600;
+      color: #1b1b1b;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin: 6px 0;
+      cursor: pointer;
+      font-size: 16px;
+      color: #222;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      resize: none;
+      border-radius: 10px;
+      padding: 12px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      font-family: "Poppins", sans-serif;
+      background: rgba(255,255,255,0.8);
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    button {
+      background: linear-gradient(135deg, #43A047, #66BB6A);
+      color: white;
+      font-size: 17px;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: block;
+      margin: 30px auto 0;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    button:hover {
+      background: linear-gradient(135deg, #2E7D32, #4CAF50);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      color: white;
+      margin: 30px 0;
+      font-size: 14px;
+    }
+
+    /* Toast Notification Styles */
+.toast {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, #FFB300, #FF9800);
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(10px);
+}
+
+.toast.error {
+  background: linear-gradient(135deg, #E53935, #D32F2F);
+}
+
+  </style>
+
+</head>
+<body>
+<header>
+  <div style="display:flex;align-items:center;justify-content:center;gap:15px;">
+    <img src="proc2.png" alt="Proctor-X Logo" style="width:60px;height:60px;object-fit:contain;border-radius:50%;border:2px solid #00ffc3;">
+    <h1 style="margin:0;font-size:28px;color:#000000;letter-spacing:1px;">PROCTOR-X</h1>
+  </div>
+  <p style="color:rgba(0, 0, 0, 0.9);font-size:15px;margin-top:6px;">‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ Online Examination</p>
+</header>
+<div class="container">
+  <div id="studentNameDisplay"></div>
+  <form id="examForm" action="submit_exam.php" method="POST">
+    <input type="hidden" name="studentName" id="studentNameField">
+    <div id="examContent"></div>
+    <button type="submit" id="submitBtn" style="display:none;">Submit Exam</button>
+  </form>
+</div>
+
+<script>
+let switchCount = 0, isSubmitting = false;
+
+const name = localStorage.getItem("studentName");
+document.getElementById("studentNameDisplay").innerHTML = `<h2>Welcome, ${name || 'Student'}</h2>`;
+document.getElementById("studentNameField").value = name || "";
+
+// Prevent certain actions like copy/paste/cut
+["copy", "paste", "cut", "contextmenu", "selectstart"].forEach(evt => document.addEventListener(evt, e => e.preventDefault()));
+
+window.addEventListener("blur", () => {
+  if (isSubmitting) return;
+  switchCount++;
+  if (switchCount === 1) showToast("⚠️ Warning: You switched tabs! 2 more and exam ends.");
+  else if (switchCount === 2) showToast("⚠️ Second warning: one more and exam terminates.");
+  else if (switchCount >= 3) {
+    showToast("❌ Exam terminated for multiple tab switches.", "error");
+    setTimeout(autoSubmitExam, 2500);
+  }
+});
+
+function autoSubmitExam() {
+  const form = document.getElementById("examForm");
+  const data = new FormData(form);
+  fetch("submit_exam.php", { method: "POST", body: data })
+    .then(() => { localStorage.removeItem("studentName"); window.location.href = "terminated.html"; })
+    .catch(() => { localStorage.removeItem("studentName"); window.location.href = "terminated.html"; });
+}
+
+// Display toast notifications
+// Display toast notifications
+// Add a flag to check if the warning has already been displayed
+let warningDisplayed = false;
+
+
+
+// Function to check if a warning needs to be displayed
+function checkCameraWarning(){
+  fetch("warning_flag.php?t=" + Date.now())  // Check the flag
+    .then(response => response.text())
+    .then(data => {
+      if (data.trim() === "1" && !warningDisplayed) {
+        // Show the warning immediately if the flag is 1 and warning is not displayed yet
+        console.log("Displaying warning immediately");  // Debugging log
+        showToast("⚠ Camera warning: Please look at the screen!", "error");
+
+        // Set the flag to prevent further warnings
+        warningDisplayed = true;
+
+        // Reset the warning flag on the server
+        fetch("clear_warning.php"); 
+
+        // Reset the warning flag after some time (to allow it to be set again later)
+        setTimeout(() => {
+          warningDisplayed = false;  // Allow the warning to be triggered again after some time
+        }, 5000);  // Wait for 5 seconds before allowing the warning to be shown again
+      }
+    })
+    .catch(() => {
+      console.error("Failed to check warning flag");
+    });
+}
+
+// Call this function periodically (every 2 seconds)
+setInterval(checkCameraWarning, 2000);  // Check every 2 seconds
+
+
+
+// Function to display the warning as a toast notification
+function showToast(message, type = 'warning') {
+  const toast = document.createElement("div");
+  toast.className = `toast ${type}`;
+  toast.textContent = message;
+  document.body.appendChild(toast);
+
+  setTimeout(() => toast.classList.add("show"), 100);  // Show toast after 100ms
+
+  // Hide and remove the toast after 2 seconds
+  setTimeout(() => {
+    toast.classList.remove("show");
+    setTimeout(() => toast.remove(), 300);  // Delay for smooth removal
+  }, 2000);  // 2 seconds for the warning message
+
+  // Special case for Exam Termination message (show for a bit longer)
+  if (type === "error") {
+    setTimeout(() => {
+      toast.classList.remove("show");
+      setTimeout(() => toast.remove(), 300); // Delay removal for termination message
+    }, 5000);  // Error messages stay longer (5 seconds)
+  }
+}
+
+
+// Call this function periodically (every 2 seconds)
+setInterval(checkCameraWarning, 2000);
+
+// Function to display the warning as a toast notification
+function showToast(message, type = 'warning') {
+  const toast = document.createElement("div");
+  toast.className = `toast ${type}`;
+  toast.textContent = message;
+  document.body.appendChild(toast);
+
+  setTimeout(() => toast.classList.add("show"), 100);  // Show toast after 100ms
+  
+  // Hide and remove the toast after 2000ms (2 seconds) for warnings
+  setTimeout(() => {
+    toast.classList.remove("show");
+    setTimeout(() => toast.remove(), 300);  // Delay for smooth removal
+  }, 1000);  // 2 seconds for the warning message
+
+  // Special case for Exam Termination message (show for a bit longer)
+  if (type === "error") {
+    setTimeout(() => {
+      toast.classList.remove("show");
+      setTimeout(() => toast.remove(), 300); // Delay removal for termination message
+    }, 5000);  // Termination toast stays for 5 seconds
+  }
+}
+
+
+
+
+// Load exam questions
+function loadExamQuestions() {
+  fetch("confirmed_questions.txt?t=" + Date.now())
+    .then(r => r.text())
+    .then(data => {
+      const c = document.getElementById("examContent");
+      if (!data.trim()) { c.innerHTML = "<p>No confirmed questions.</p>"; return; }
+      const lines = data.trim().split("\n");
+      lines.forEach((line, i) => {
+        const p = line.split("|");
+        const q = p[0], opts = p[1] ? p[1].split(",") : [];
+        const type = p[3]?.trim() || "mcq";
+        const d = document.createElement("div");
+        d.innerHTML = `<p><strong>Q${i + 1}:</strong> ${q}</p>` +
+          (type === "mcq" ? opts.map((o, j) => `<label><input type="radio" name="q${i + 1}" value="${String.fromCharCode(65 + j)}">${String.fromCharCode(65 + j)}. ${o}</label>`).join("")
+            : `<textarea name="q${i + 1}" placeholder="Write your answer..."></textarea>`);
+        c.appendChild(d);
+      });
+      document.getElementById("submitBtn").style.display = "block";
+    });
+}
+window.onload = loadExamQuestions;
+
+// Function to check if the exam is terminated
+function checkServerTermination() {
+  fetch("terminated_flag.txt?t=" + Date.now())
+    .then(r => r.text()).then(t => {
+      if (t.trim() === "1") {
+        showToast("❌ Exam terminated by camera monitor.", "error");
+        setTimeout(autoSubmitExam, 1500);
+      }
+    }).catch(() => { });
+}
+setInterval(checkServerTermination, 2000);
+
+// Function to check for camera warning
+// Check for violations and show a warning at 5 seconds
+// Function to check violations and show warnings
+let violation_accum = 0;  // Example violation accumulator
+let warningGiven = false;  // Flag to prevent repeated warnings
+
+// Function to check violations and show warnings
+function checkViolation() {
+  // Check if violation accumulates to 5 seconds, and display warning toast
+  if (violation_accum >= 3 && violation_accum < 10 && !warningGiven) {
+    showToast("⚠️ Warning: You switched tabs! 2 more and exam ends.", "warning");
+    
+
+    // Play beep sound when violation reaches 5 seconds
+    playBeepSound();
+
+    warningGiven = true;  // Avoid showing the warning multiple times
+  }
+
+  // When violation exceeds 10 seconds, terminate the exam and show termination toast
+  if (violation_accum >= 10) {
+    showToast("❌ Exam Terminated. You violated the exam conditions.", "error");
+    setTimeout(autoSubmitExam, 5000);  // Wait for 5 seconds before auto-submit
+  }
+}
+
+// Function to play beep sound (works on both browser and Python side)
+function playBeepSound() {
+  try {
+    console.log('\u0007');  // This triggers the browser beep sound (works on most browsers)
+  } catch (e) {
+    console.log("Beep sound failed in browser: " + e);
+  }
+
+  // For more customized sound (optional, browser-specific)
+  const audio = new Audio('assets/beep-sound.mp3');  // Path to your custom beep sound
+  audio.play();  // This should now play the sound
+}
+
+// Check every 2 seconds
+setInterval(checkViolation, 2000);  // Check every 2 seconds
+
+
+// Function to play beep sound (works on both browser and Python side)
+function playBeepSound() {
+  try {
+    console.log('\u0007');  // This triggers the browser beep sound (works on most browsers)
+  } catch (e) {
+    console.log("Beep sound failed in browser: " + e);
+  }
+
+  // For more customized sound (optional, browser-specific)
+  const audio = new Audio('assets/beep-sound.mp3');  // You can use any custom beep sound here
+  audio.play();
+}
+
+// Check every 2 seconds
+setInterval(checkViolation, 2000);  // Check every 2 seconds
+
+
+// Function to play beep sound (works on both browser and Python side)
+function playBeepSound() {
+  // For browsers, use an ASCII bell
+  try {
+    console.log('\u0007');  // This triggers the browser beep sound (works on most browsers)
+  } catch (e) {
+    console.log("Beep sound failed in browser: " + e);
+  }
+
+  // For more customized sound (optional, browser-specific)
+  const audio = new Audio('beep-sound.mp3');  // You can use any custom beep sound here
+  audio.play();
+}
+
+// Call this function in your main loop (or use setInterval)
+setInterval(checkViolation, 5000);  // Check every 2 seconds
+
+// Check for server-side termination signal
+function checkPhoneDetectionTermination() {
+    fetch("terminated_flag.txt?t=" + Date.now())
+    .then(r => r.text())
+    .then(t => {
+        if (t.trim() === "1") {
+            showToast("❌ Exam terminated due to phone detection.", "error");
+            setTimeout(autoSubmitExam, 2500); // Automatically submit after termination
+        }
+    }).catch(() => {});
+}
+
+// Check every 2 seconds
+setInterval(checkPhoneDetectionTermination, 2000);
+
+</script>
+
+</body>
+</html>

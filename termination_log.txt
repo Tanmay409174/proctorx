@@ -1,0 +1,113 @@
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 19:07:56
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 19:16:54
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 19:33:37
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 19:34:01
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 19:34:45
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 19:50:31
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 19:51:01
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 19:52:33
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 20:03:21
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 20:03:45
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 20:04:00
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 20:09:24
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 20:09:48
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 20:10:03
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 20:19:13
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 20:36:57
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 20:37:18
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 20:38:26
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 20:39:13
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 20:40:09
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 20:40:20
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 20:40:30
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 20:40:39
+TERMINATED by camera monitor - Student:  - Time: 2025-10-25 20:41:05
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:07:14
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:07:35
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:07:52
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:08:03
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:08:35
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:13:53
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:14:39
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:16:12
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:16:53
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:20:04
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:28:33
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:48:46
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:49:22
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:49:49
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:50:07
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:51:59
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:52:35
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:52:46
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:52:58
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:53:32
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:54:08
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 06:58:19
+TERMINATED by camera monitor - Student:  - Time: 2025-10-26 07:11:47
+Terminated by camera monitor - Student:  - Time: 2025-10-26 07:22:42
+Terminated by camera monitor - Student:  - Time: 2025-10-26 07:23:33
+Terminated by camera monitor - Student:  - Time: 2025-10-26 07:26:22
+Terminated by camera monitor - Student:  - Time: 2025-10-26 07:31:47
+Terminated by camera monitor - Student:  - Time: 2025-10-26 07:32:41
+Terminated by camera monitor - Student:  - Time: 2025-10-26 07:43:47
+Terminated by camera monitor - Student:  - Time: 2025-10-26 07:50:31
+Terminated by camera monitor - Student:  - Time: 2025-10-26 08:00:46
+Terminated by camera monitor - Student:  - Time: 2025-10-26 08:25:00
+Terminated by camera monitor - Student:  - Time: 2025-10-26 08:30:25
+Terminated by camera monitor - Student:  - Time: 2025-10-26 08:37:31
+Terminated by camera monitor - Student:  - Time: 2025-10-26 08:38:20
+Terminated by camera monitor - Student:  - Time: 2025-10-26 08:40:04
+Terminated by camera monitor - Student:  - Time: 2025-10-26 08:41:37
+Terminated by camera monitor - Student:  - Time: 2025-10-26 08:43:20
+Terminated by camera monitor - Student:  - Time: 2025-10-26 08:44:50
+Terminated by camera monitor - Student:  - Time: 2025-10-26 08:45:58
+Terminated by camera monitor - Student:  - Time: 2025-10-26 09:07:35
+Terminated by camera monitor - Student:  - Time: 2025-10-26 09:16:19
+Terminated by camera monitor - Student:  - Time: 2025-10-26 09:29:01
+Terminated by camera monitor - Student:  - Time: 2025-10-26 18:36:40
+Terminated by camera monitor - Student:  - Time: 2025-10-26 18:37:49
+Terminated by camera monitor - Student:  - Time: 2025-10-26 18:52:26
+Terminated by camera monitor - Student:  - Time: 2025-10-28 18:43:56
+Terminated by camera monitor - Student:  - Time: 2025-10-29 09:32:21
+Terminated by camera monitor - Student:  - Time: 2025-10-29 09:33:02
+Terminated by camera monitor - Student:  - Time: 2025-10-29 09:34:02
+Terminated by camera monitor - Student:  - Time: 2025-10-29 09:36:52
+Terminated by camera monitor - Student:  - Time: 2025-10-29 09:37:31
+Terminated by camera monitor - Student:  - Time: 2025-10-29 12:40:17
+Terminated by camera monitor - Student:  - Time: 2025-10-29 12:43:57
+Terminated by camera monitor - Student:  - Time: 2025-10-29 12:49:33
+Terminated by camera monitor - Student:  - Time: 2025-10-29 13:53:53
+Terminated by camera monitor - Student:  - Time: 2025-10-29 13:55:43
+Terminated by camera monitor - Student:  - Time: 2025-10-29 13:56:47
+Terminated by camera monitor - Student:  - Time: 2025-10-29 13:57:43
+Terminated by camera monitor - Student:  - Time: 2025-10-29 14:00:31
+Terminated by camera monitor - Student:  - Time: 2025-10-29 14:10:32
+Terminated by camera monitor - Student:  - Time: 2025-10-29 14:13:43
+Terminated by camera monitor - Student:  - Time: 2025-10-29 14:29:48
+Terminated by camera monitor - Student:  - Time: 2025-10-29 14:35:24
+Terminated by camera monitor - Student:  - Time: 2025-10-29 14:36:44
+Terminated by camera monitor - Student:  - Time: 2025-10-29 14:37:16
+Terminated by camera monitor - Student:  - Time: 2025-10-29 14:47:05
+Terminated by camera monitor - Student:  - Time: 2025-10-29 14:48:51
+Terminated by camera monitor - Student:  - Time: 2025-10-29 14:54:56
+Terminated by camera monitor - Student:  - Time: 2025-10-29 15:14:16
+Terminated by camera monitor - Student:  - Time: 2025-10-29 15:43:44
+Terminated by camera monitor - Student:  - Time: 2025-10-29 15:58:36
+Terminated by camera monitor - Student:  - Time: 2025-10-29 16:02:18
+Terminated by camera monitor - Student:  - Time: 2025-10-29 16:08:55
+Terminated by camera monitor - Student:  - Time: 2025-10-29 16:10:20
+Terminated by camera monitor - Student:  - Time: 2025-10-29 16:16:52
+Terminated by camera monitor - Student: Unknown - Time: 2025-10-29 16:37:11
+Terminated by camera monitor - Student: Unknown - Time: 2025-10-29 16:44:41
+Terminated by camera monitor - Student: Unknown - Time: 2025-10-29 16:50:32
+Terminated by camera monitor - Student: Unknown - Time: 2025-10-29 16:51:15
+Terminated by camera monitor - Student: Unknown - Time: 2025-10-29 16:53:11
+Terminated by camera monitor - Student: Unknown - Time: 2025-10-29 18:14:58
+Terminated by camera monitor - Student: Unknown - Time: 2025-10-29 18:19:49
+Terminated by camera monitor - Student: Unknown - Time: 2025-10-29 18:20:31
+Terminated by camera monitor - Student: Unknown - Time: 2025-10-29 18:20:57
+Terminated by camera monitor - Student: Unknown - Time: 2025-10-29 18:22:27
+Terminated by camera monitor - Student: Unknown - Time: 2025-10-29 18:23:19
+Terminated by camera monitor - Student: Unknown - Time: 2025-10-29 18:25:29
+Terminated by camera monitor - Student: Unknown - Time: 2025-10-30 04:07:44
